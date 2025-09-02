@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>???</title>
+
+    <script>
+        try {
+            if (sessionStorage.getItem('pt_should_open') === '1') {
+                document.documentElement.classList.add('pt-opening');
+            }
+        } catch (e) { }
+    </script>
+
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- 햄버거 버튼 -->
+        <button class="menu" id="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </header>
+
+    <!-- SideBar -->
+    <sidebar>
+        <!-- 네비게이션 메뉴 -->
+        <nav id="drawer" class="drawer" role="navigation">
+            <ul>
+                <li><a href="#">메인 화면</a></li>
+                <li><a href="#">설정</a></li>
+                <li><a href="#">힌트</a></li>
+                <li><a href="#">도움말</a></li>
+            </ul>
+        </nav>
+    </sidebar>
+
+    <!-- 배경 오버레이 -->
+    <div id="backdrop" class="backdrop" aria-hidden="true"></div>
+
+    <!-- Section -->
+    <section>
+        <!-- 메인 컨텐츠 -->
+        <div class="title"># 1</div>
+    </section>
+
+    <script src="../js/util.js"></script>
+</body>
+
+</html>

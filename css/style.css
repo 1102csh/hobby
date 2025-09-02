@@ -1,0 +1,191 @@
+/* ====== Dark Theme Variables ====== */
+:root {
+  --bg: #0f1115;            /* 전체 배경 */
+  --panel: #151922;         /* 드로어/패널 */
+  --text: #e5e7eb;          /* 기본 텍스트 */
+  --muted: #a1a7b3;         /* 보조 텍스트 */
+  --border: #232734;        /* 경계선 */
+  --accent: #7aa2ff;        /* 포커스/hover 포인트 */
+  --backdrop: rgba(0, 0, 0, 0.45);
+  --drawer-width: 280px;
+  --radius: 14px;
+  --transition: 280ms ease;
+}
+
+/* ====== Base ====== */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Apple SD Gothic Neo, "Noto Sans KR", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--accent); }
+ul { list-style: none; padding: 0; margin: 0; }
+sidebar, aside { display: block; } /* <sidebar> 대응 */
+
+/* ====== Header ====== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+  backdrop-filter: saturate(140%) blur(6px);
+  background: color-mix(in oklab, var(--bg) 80%, black);
+  border-bottom: 1px solid var(--border);
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+/* ====== Hamburger Button (id=menu, class=menu) ====== */
+.menu {
+  position: relative;
+  width: 48px;              /* 터치 타겟 44px+ */
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: visible;        /* X 잘림 방지 */
+}
+
+.menu:hover { background: rgba(255,255,255,0.04); }
+.menu:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* 햄버거 바 */
+.menu .bar {
+  position: relative;
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+  transform-origin: center;
+}
+.menu .bar + .bar { margin-top: 6px; }
+
+/* 활성화(X로 변환) */
+.menu.active .bar:nth-child(1) {
+  transform: translateY(9px) rotate(-45deg);
+}
+.menu.active .bar:nth-child(2) {
+  opacity: 0;
+}
+.menu.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(45deg);
+}
+
+/* ====== Drawer (id=drawer) ====== */
+.drawer {
+  position: fixed;
+  inset: 0 auto 0 0;              /* left side */
+  width: min(86vw, var(--drawer-width));
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  transform: translateX(-100%);
+  transition: transform var(--transition);
+  z-index: 1001;
+  padding: 72px 18px 20px;        /* 헤더/버튼 여백 고려 */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.drawer.open { transform: translateX(0); }
+
+/* 메뉴 항목 */
+.drawer ul li {
+  margin: 6px 0;
+}
+.drawer a {
+  display: block;
+  padding: 12px 10px;
+  border-radius: 10px;
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+}
+.drawer a:hover {
+  background: rgba(255,255,255,0.05);
+  color: #ffffff;
+}
+.drawer a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ====== Backdrop (id=backdrop) ====== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--backdrop);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+  z-index: 1000;
+}
+.backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ====== Sections / Layout ====== */
+section {
+  padding: 20px clamp(16px, 4vw, 32px);
+}
+
+/* ====== Body scroll lock when nav open ====== */
+body.nav-open { overflow: hidden; }
+
+/* ====== Reduced Motion ====== */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ====== Optional: Right-side Drawer 버전 ======
+.drawer { inset: 0 0 0 auto; transform: translateX(100%); }
+.drawer.open { transform: translateX(0); }
+*/
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.content {
+  font-size: 18px;
+  word-spacing: 2px;
+  line-height: 35px;
+  margin-bottom: 30px;
+  color: var(--text);
+}
+#tutorial {
+  color: darkgray;
+}
+
+.typer-caret {
+  display: inline-block;
+  width: 0;
+  border-right: 2px solid currentColor;
+  animation: typer-blink 1s steps(1) infinite;
+}
+@keyframes typer-blink {
+  50% { border-right-color: transparent; }
+}
+#enter { color: gold; cursor: pointer; display: none; }
+#enter:hover { color: goldenrod; }
+
+.keyword {
+  color: gold;
+}
