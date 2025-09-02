@@ -84,7 +84,7 @@
             locked = true;
             solved = true;   // ✅ 정답 맞춤 기록
 
-            retryBtn.style.coor = 'gold';
+            retryBtn.style.color = 'gold';
             retryBtn.textContent = '다음 단계로 이동';
             return;
         }

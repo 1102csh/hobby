@@ -5,7 +5,6 @@ const password = 1234;
     const params = new URLSearchParams(location.search);
     const id = params.get('password');
     const btn = document.getElementById('enter');
-    const status = document.getElementById('status');
     const title = document.getElementById("title");
 
     const tutorial = document.getElementById("tutorial");
