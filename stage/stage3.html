@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>???</title>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <button class="menu" id="menu" aria-label="메뉴 열기" aria-expanded="false" aria-controls="drawer">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+    </header>
+
+    <!-- SideBar -->
+    <sidebar>
+        <nav id="drawer" class="drawer" role="navigation">
+            <ul>
+                <li><a href="#">잠긴 옵션</a></li>
+                <li><a href="#">잠긴 옵션</a></li>
+                <li><a href="#">잠긴 옵션</a></li>
+                <li><a href="#">잠긴 옵션</a></li>
+            </ul>
+        </nav>
+    </sidebar>
+
+    <!-- 배경 오버레이 -->
+    <div id="backdrop" class="backdrop" aria-hidden="true"></div>
+
+    <!-- Section -->
+    <section>
+        <div class="title" id="title"># 3</div>
+        <!-- 전환 버튼(유효한 id일 때만 활성화) -->
+        <div id="enter" class="content">다음 단계로 이동</div>
+    </section>
+
+    <script src="../js/util.js"></script>
+</body>
+</html>
