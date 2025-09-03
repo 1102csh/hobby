@@ -1,4 +1,3 @@
-// ✅ 유효성 규칙: 4자리 숫자 (원하면 여기만 바꾸면 됨)
 const password = 1234;
 
 (function init() {

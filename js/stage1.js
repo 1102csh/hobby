@@ -181,7 +181,7 @@
         retryBtn.addEventListener('click', () => {
             if (solved) {
                 // ✅ 정답 맞췄을 경우 이동
-                location.href = "./stage2.html"; // 원하는 링크로 변경
+                location.href = "./stage2.html?password=0000"; // 원하는 링크로 변경
             } else {
                 // 실패하거나 도중일 경우 다시 시작
                 resetGame();
