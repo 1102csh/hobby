@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>???</title>
+    <link href="../css/stage3.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
@@ -33,11 +34,50 @@
 
     <!-- Section -->
     <section>
-        <div class="title" id="title"># 3</div>
-        <!-- 전환 버튼(유효한 id일 때만 활성화) -->
+        <div class="title" id="title"># 3 물 붓기 퍼즐</div>
+
+        <div id="beaker-game" class="content">
+            <div id="hud">
+                <div><strong>목표:</strong> 10L 비커에 <span class="keyword">8L</span> 만들기</div>
+                <div id="status" aria-live="polite"></div>
+            </div>
+
+            <div class="board" id="board" aria-label="비커 보드">
+                <!-- 10L (초기 0L) -->
+                <button class="beaker" data-name="B10" data-capacity="10" data-volume="0" aria-label="10리터 비커, 현재 0리터">
+                    <div class="label">10L</div>
+                    <div class="glass">
+                        <div class="liquid"></div>
+                    </div>
+                    <div class="vol">0L</div>
+                </button>
+
+                <!-- 5L (초기 가득 5L) -->
+                <button class="beaker" data-name="B5" data-capacity="5" data-volume="5" aria-label="5리터 비커, 현재 5리터">
+                    <div class="label">5L</div>
+                    <div class="glass">
+                        <div class="liquid"></div>
+                    </div>
+                    <div class="vol">5L</div>
+                </button>
+
+                <!-- 6L (초기 가득 6L) -->
+                <button class="beaker" data-name="B6" data-capacity="6" data-volume="6" aria-label="6리터 비커, 현재 6리터">
+                    <div class="label">6L</div>
+                    <div class="glass">
+                        <div class="liquid"></div>
+                    </div>
+                    <div class="vol">6L</div>
+                </button>
+            </div>
+
+            <p class="hint">비커 클릭 → 다른 비커 클릭 시 붓기. 빈 공간/같은 비커 클릭 시 선택 해제.</p>
+        </div>
         <div id="enter" class="content">다음 단계로 이동</div>
     </section>
 
+    <script src="../js/stage3.js"></script>
     <script src="../js/util.js"></script>
 </body>
+
 </html>

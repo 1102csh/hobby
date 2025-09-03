@@ -1,0 +1,126 @@
+/* === Beaker Game === */
+#beaker-game {
+    user-select: none;
+}
+
+#beaker-game #hud {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+    color: var(--muted);
+}
+
+#beaker-game #status {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(160px, 200px));
+    gap: 24px;
+    padding: 20px 0;
+}
+
+.beaker {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* 아래로 붙이기 */
+    align-items: center;
+    background: transparent;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 14px 16px;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.beaker:hover {
+    border-color: color-mix(in oklab, var(--border) 60%, var(--accent));
+}
+
+.beaker.selected {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 60%, transparent);
+    border-color: var(--accent);
+}
+
+.beaker.pouring {
+    pointer-events: none;
+}
+
+.beaker .label {
+    margin-bottom: 6px;
+}
+
+.beaker .glass {
+    position: relative;
+    width: 100%;
+    border: 2px solid var(--border);
+    background: color-mix(in oklab, var(--panel) 70%, #000);
+    border-radius: 10px;
+    overflow: hidden;
+    /* 높이: JS가 px로 직접 넣음 */
+}
+
+/* 물: 항상 바닥에서 채움 */
+.beaker .liquid {
+    position: absolute !important;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto !important;
+    width: 100%;
+    height: 0%;
+    /* JS에서 0~100%로 설정 */
+    background: color-mix(in oklab, var(--accent) 60%, #4ea);
+    border-radius: 0 0 8px 8px;
+
+    transition: height 0.5s ease;
+    /* ⬅ 물 차오르는 애니메이션 */
+    /* 아래 둥글게 */
+}
+
+.beaker .vol {
+    margin-top: 8px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: gold;
+}
+
+.stream {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 6px;
+    height: 0;
+    transform-origin: top center;
+    background: color-mix(in oklab, var(--accent) 70%, white);
+    border-radius: 3px;
+    opacity: 0;
+    transition: height 80ms linear, opacity 120ms ease;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px color-mix(in oklab, var(--accent) 55%, #fff));
+}
+
+/* 틸트 애니메이션 */
+.beaker.tilt-left {
+    transform: rotate(-12deg) translateY(-4px);
+}
+
+.beaker.tilt-right {
+    transform: rotate(12deg) translateY(-4px);
+}
+
+/* 성공 시 */
+#enter {
+    display: none;
+    margin-top: 10px;
+}
+
+#enter.show {
+    display: inline-block;
+}
